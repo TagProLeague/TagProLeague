@@ -12,7 +12,7 @@ export class HistoricalLeagues extends React.Component<RouteComponentProps<{}>, 
         super();
         this.state = { leagues: [], loading: true };
 
-        fetch('api/Leagues/Current')
+        fetch('api/Leagues/Historical')
             .then(response => response.json() as Promise<League[]>)
             .then(data => {
                 this.setState({ leagues: data, loading: false });
@@ -26,7 +26,7 @@ export class HistoricalLeagues extends React.Component<RouteComponentProps<{}>, 
 
         return <div>
             <h1>Leagues</h1>
-            <p>This component fetches leagues.</p>
+            <p>This component fetches historical leagues.</p>
             {contents}
         </div>;
     }
