@@ -12,7 +12,7 @@ export class Leagues extends React.Component<RouteComponentProps<{}>, LeaguesSta
         super();
         this.state = { leagues: [], loading: true };
 
-        fetch('api/Leagues/Current')
+        fetch('api/Leagues')
             .then(response => response.json() as Promise<League[]>)
             .then(data => {
                 this.setState({ leagues: data, loading: false });
@@ -27,6 +27,7 @@ export class Leagues extends React.Component<RouteComponentProps<{}>, LeaguesSta
         return <div>
             <h1>Leagues</h1>
             <p>This component fetches leagues.</p>
+            <a href='Leagues/Historical'>This links to historical leagues</a>
             {contents}
         </div>;
     }
@@ -35,12 +36,14 @@ export class Leagues extends React.Component<RouteComponentProps<{}>, LeaguesSta
         return <table className='table'>
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Name</th>
                 </tr>
             </thead>
             <tbody>
                 {leagues.map(league =>
-                    <tr key={league.name}>
+                    <tr key={league.id}>
+                        <td>{league.id}</td>
                         <td>{league.name}</td>
                     </tr>
                 )}
@@ -50,5 +53,6 @@ export class Leagues extends React.Component<RouteComponentProps<{}>, LeaguesSta
 }
 
 interface League {
+    id: number;
     name: string;
 }
