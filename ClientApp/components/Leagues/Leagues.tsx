@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
+import { Link } from 'react-router-dom';
 import 'isomorphic-fetch';
 
 interface LeaguesState {
@@ -7,16 +8,32 @@ interface LeaguesState {
     loading: boolean;
 }
 
+interface Params {
+    argument: string;
+}
+
 export class Leagues extends React.Component<RouteComponentProps<{}>, LeaguesState> {
-    constructor() {
-        super();
+    constructor(props: any) {
+        super(props);
+        const params = this.props.match.params as Params;
         this.state = { leagues: [], loading: true };
 
-        fetch('api/Leagues')
-            .then(response => response.json() as Promise<League[]>)
-            .then(data => {
-                this.setState({ leagues: data, loading: false });
-            });
+        if (params.argument && params.argument.toLowerCase() == "historical")
+        {
+            fetch('api/Leagues/Historical')
+                .then(response => response.json() as Promise<League[]>)
+                .then(data => {
+                    this.setState({ leagues: data, loading: false });
+                });
+        }
+        else 
+        {
+            fetch('api/Leagues')
+                .then(response => response.json() as Promise<League[]>)
+                .then(data => {
+                    this.setState({ leagues: data, loading: false });
+                });
+        }
     }
 
     public render() {
@@ -44,7 +61,7 @@ export class Leagues extends React.Component<RouteComponentProps<{}>, LeaguesSta
                 {leagues.map(league =>
                     <tr key={league.id}>
                         <td>{league.id}</td>
-                        <td>{league.name}</td>
+                        <td><Link className='' to={`/leagues/${league.name}`}>{league.name}</Link></td>
                     </tr>
                 )}
             </tbody>
