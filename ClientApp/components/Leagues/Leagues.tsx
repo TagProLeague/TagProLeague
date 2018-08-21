@@ -6,6 +6,7 @@ import 'isomorphic-fetch';
 interface LeaguesState {
     leagues: League[];
     loading: boolean;
+    isHistoricalPage: boolean;
 }
 
 interface Params {
@@ -16,9 +17,13 @@ export class Leagues extends React.Component<RouteComponentProps<{}>, LeaguesSta
     constructor(props: any) {
         super(props);
         const params = this.props.match.params as Params;
-        this.state = { leagues: [], loading: true };
+        this.state = {
+            leagues: [],
+            loading: true,
+            isHistoricalPage: (params.argument != undefined && params.argument.toLowerCase() == "historical")
+        };
 
-        if (params.argument && params.argument.toLowerCase() == "historical")
+        if (this.state.isHistoricalPage)
         {
             fetch('api/Leagues/Historical')
                 .then(response => response.json() as Promise<League[]>)
@@ -41,10 +46,12 @@ export class Leagues extends React.Component<RouteComponentProps<{}>, LeaguesSta
             ? <p><em>Loading...</em></p>
             : Leagues.renderLeaguesTable(this.state.leagues);
 
+        let historicalLink = this.state.isHistoricalPage ? null : <a href='Leagues/Historical'>This links to historical leagues</a>
+
         return <div>
             <h1>Leagues</h1>
             <p>This component fetches leagues.</p>
-            <a href='Leagues/Historical'>This links to historical leagues</a>
+            {historicalLink}
             {contents}
         </div>;
     }
@@ -61,7 +68,7 @@ export class Leagues extends React.Component<RouteComponentProps<{}>, LeaguesSta
                 {leagues.map(league =>
                     <tr key={league.id}>
                         <td>{league.id}</td>
-                        <td><Link className='' to={`/leagues/${league.name}`}>{league.name}</Link></td>
+                        <td><Link className='' to={`/league/${league.name}`}>{league.name}</Link></td>
                     </tr>
                 )}
             </tbody>
