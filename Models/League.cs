@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Destarwin.Models
+namespace TagProLeague.Models
 {
     public class League
     {

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26906.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Destarwin", "Destarwin.csproj", "{60AEC7A4-610E-4DC0-857A-9195F9D52137}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TagProLeague", "TagProLeague.csproj", "{60AEC7A4-610E-4DC0-857A-9195F9D52137}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
