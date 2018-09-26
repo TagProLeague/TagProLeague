@@ -15,13 +15,19 @@ export class League extends React.Component<RouteComponentProps<{}>, LeagueState
     constructor(props: any) {
         super(props);
         const params = this.props.match.params as Params;
-        this.state = { league: { id: 1, name: "" }, loading: true };
+        this.state = {
+            league: { id: 1, name: "" },
+            loading: true
+        };
 
         fetch(`api/Leagues/${params.leagueName}`)
             .then(response => response.json() as Promise<LeagueModel>)
             .then(data => {
-                this.setState({ league: data, loading: false });
-            });
+                this.setState({
+                    league: data,
+                    loading: false
+                });
+        });
     }
 
     public render() {

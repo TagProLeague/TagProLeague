@@ -17,9 +17,9 @@ namespace TagProLeague.Controllers
             {
                 Id = index,
                 LeagueType = Enums.LeagueType.StandardLeague,
-                Name = "League " + index,
+                Name = "League" + index,
                 CreatedOn = DateTime.UtcNow,
-                Seasons = new List<String> { "1","2","3" },
+                Seasons = new List<String> { "S1","S2","S3" },
                 Teams = new List<String> { "Franchise 1", "Franchise 2", "Franchise 3" },
                 Players = new List<String> { "Player 1", "Player 1", "Player 1" },
             });
@@ -32,9 +32,9 @@ namespace TagProLeague.Controllers
             {
                 Id = index,
                 LeagueType = Enums.LeagueType.StandardLeague,
-                Name = "Historical League " + index,
+                Name = "HistoricalLeague" + index,
                 CreatedOn = DateTime.UtcNow,
-                Seasons = new List<String> { "1", "2", "3" },
+                Seasons = new List<String> { "S1", "S2", "S3" },
                 Teams = new List<String> { "Franchise 1", "Franchise 2", "Franchise 3" },
                 Players = new List<String> { "Player 1", "Player 1", "Player 1" },
             });
@@ -47,9 +47,9 @@ namespace TagProLeague.Controllers
             {
                 Id = 0,
                 LeagueType = Enums.LeagueType.StandardLeague,
-                Name = "League " + leagueName,
+                Name = leagueName,
                 CreatedOn = DateTime.UtcNow,
-                Seasons = new List<String> { "1", "2", "3" },
+                Seasons = new List<String> { "S1", "S2", "S3" },
                 Teams = new List<String> { "Team 1", "Team 2", "Team 3" },
                 Players = new List<String> { "Player 1", "Player 1", "Player 1" },
             };
@@ -76,7 +76,7 @@ namespace TagProLeague.Controllers
             {
                 Id = 0,
                 LeagueType = Enums.LeagueType.StandardLeague,
-                Name = "Season " + seasonName,
+                Name = seasonName,
                 CreatedOn = DateTime.UtcNow,
                 League = GetLeague(leagueName),
                 Teams = new List<String> { "Team 1", "Team 2", "Team 3" },

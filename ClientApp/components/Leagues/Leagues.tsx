@@ -20,39 +20,57 @@ export class Leagues extends React.Component<RouteComponentProps<{}>, LeaguesSta
         this.state = {
             leagues: [],
             loading: true,
-            isHistoricalPage: (params.argument != undefined && params.argument.toLowerCase() == "historical")
+            isHistoricalPage: false
         };
 
-        if (this.state.isHistoricalPage)
-        {
-            fetch('api/Leagues/Historical')
-                .then(response => response.json() as Promise<League[]>)
-                .then(data => {
-                    this.setState({ leagues: data, loading: false });
+        this.loadLeagues();
+    }
+
+    loadLeagues = () => {
+        fetch('api/Leagues/')
+            .then(response => response.json() as Promise<League[]>)
+            .then(data => {
+                this.setState({
+                    leagues: data,
+                    loading: false,
+                    isHistoricalPage: false
                 });
-        }
-        else 
-        {
-            fetch('api/Leagues')
-                .then(response => response.json() as Promise<League[]>)
-                .then(data => {
-                    this.setState({ leagues: data, loading: false });
+            });
+    }
+
+    loadHistoricalLeagues = () => {
+        fetch('api/Leagues/Historical')
+            .then(response => response.json() as Promise<League[]>)
+            .then(data => {
+                this.setState({
+                    leagues: data,
+                    loading: false,
+                    isHistoricalPage: true
                 });
-        }
+            });
     }
 
     public render() {
-        let contents = this.state.loading
+        var titleText = <h1>Leagues</h1>;
+        var bodyText = <p>This component fetches leagues.</p>
+        var link = <button onClick={this.loadHistoricalLeagues}>This link fetches historical leagues</button>;
+
+        if (this.state.isHistoricalPage)
+        {
+            titleText = <h1>Historical Leagues</h1>
+            bodyText = <p>This component fetches historical leagues.</p>
+            link = <button onClick={this.loadLeagues}>This link fetches active leagues</button>;
+        }
+
+        let leagueTable = this.state.loading
             ? <p><em>Loading...</em></p>
             : Leagues.renderLeaguesTable(this.state.leagues);
-
-        let historicalLink = this.state.isHistoricalPage ? null : <a href='Leagues/Historical'>This links to historical leagues</a>
-
+       
         return <div>
-            <h1>Leagues</h1>
-            <p>This component fetches leagues.</p>
-            {historicalLink}
-            {contents}
+            {titleText}
+            {bodyText}
+            {link}
+            {leagueTable}
         </div>;
     }
 
