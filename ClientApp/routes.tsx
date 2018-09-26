@@ -10,6 +10,5 @@ export const routes = <Layout>
     <Route exact path='/' component={ Home } />
     <Route path='/counter' component={Counter} />
     <Route exact path='/leagues/' component={Leagues} />
-    <Route exact path='/leagues/:argument' component={Leagues} />
-    <Route exact path='/league/:leagueName' component={League} />
+    <Route exact path='/leagues/:leagueName' component={League} />
 </Layout>;
