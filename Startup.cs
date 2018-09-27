@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TagProLeague.Settings;
+using TagProLeague.Services;
 
 namespace TagProLeague
 {
@@ -23,6 +25,14 @@ namespace TagProLeague
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.Configure<MongoDbSettings>(options =>
+            {
+                options.ConnectionString = Configuration["MongoDb:ConnectionString"];
+                options.Database = Configuration["MongoDb:Database"];
+            });
+
+            services.AddTransient<IMongoDbContext, MongoDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
