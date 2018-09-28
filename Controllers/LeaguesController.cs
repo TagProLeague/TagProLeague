@@ -15,13 +15,7 @@ namespace TagProLeague.Controllers
         {
             return Enumerable.Range(1, 5).Select(index => new League
             {
-                Id = index,
-                LeagueType = Enums.LeagueType.StandardLeague,
-                Name = "League" + index,
-                CreatedOn = DateTime.UtcNow,
-                Seasons = new List<String> { "S1","S2","S3" },
-                Teams = new List<String> { "Franchise 1", "Franchise 2", "Franchise 3" },
-                Players = new List<String> { "Player 1", "Player 1", "Player 1" },
+                Name = $"League {index}"
             });
         }
 
@@ -30,13 +24,7 @@ namespace TagProLeague.Controllers
         {
             return Enumerable.Range(1, 5).Select(index => new League
             {
-                Id = index,
-                LeagueType = Enums.LeagueType.StandardLeague,
-                Name = "HistoricalLeague" + index,
-                CreatedOn = DateTime.UtcNow,
-                Seasons = new List<String> { "S1", "S2", "S3" },
-                Teams = new List<String> { "Franchise 1", "Franchise 2", "Franchise 3" },
-                Players = new List<String> { "Player 1", "Player 1", "Player 1" },
+                Name = $"League {index}"
             });
         }
 
@@ -45,43 +33,24 @@ namespace TagProLeague.Controllers
         {
             return new League
             {
-                Id = 0,
-                LeagueType = Enums.LeagueType.StandardLeague,
-                Name = leagueName,
-                CreatedOn = DateTime.UtcNow,
-                Seasons = new List<String> { "S1", "S2", "S3" },
-                Teams = new List<String> { "Team 1", "Team 2", "Team 3" },
-                Players = new List<String> { "Player 1", "Player 1", "Player 1" },
+                Name = leagueName
             };
         }
 
-        [HttpGet("{leagueName}/Seasons")]
-        public IEnumerable<Season> GetSeasons(string leagueName, string seasonName)
-        {
-            return Enumerable.Range(1, 5).Select(index => new Season
-            {
-                Id = index,
-                LeagueType = Enums.LeagueType.StandardLeague,
-                CreatedOn = DateTime.UtcNow,
-                League = GetLeague(leagueName),
-                Teams = new List<String> { "Team 1", "Team 2", "Team 3" },
-                Players = new List<String> { "Player 1", "Player 1", "Player 1" },
-            });
-        }
+        //[HttpGet("{leagueName}/Seasons")]
+        //public IEnumerable<Season> GetSeasons(string leagueName, string seasonName)
+        //{
+        //    return Enumerable.Range(1, 5).Select(index => new Season
+        //    {
+        //    });
+        //}
 
-        [HttpGet("League/{leagueName}/{seasonName}")]
-        public Season GetSeason(string leagueName, string seasonName)
-        {
-            return new Season
-            {
-                Id = 0,
-                LeagueType = Enums.LeagueType.StandardLeague,
-                Name = seasonName,
-                CreatedOn = DateTime.UtcNow,
-                League = GetLeague(leagueName),
-                Teams = new List<String> { "Team 1", "Team 2", "Team 3" },
-                Players = new List<String> { "Player 1", "Player 1", "Player 1" },
-            };
-        }
+        //[HttpGet("League/{leagueName}/{seasonName}")]
+        //public Season GetSeason(string leagueName, string seasonName)
+        //{
+        //    return new Season
+        //    {
+        //    };
+        //}
     }
 }
