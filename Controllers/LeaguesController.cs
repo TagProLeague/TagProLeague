@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TagProLeague.Models;
+using MongoDB.Bson;
 
 namespace TagProLeague.Controllers
 {
@@ -13,10 +14,54 @@ namespace TagProLeague.Controllers
         [HttpGet("")]
         public IEnumerable<League> GetCurrentLeagues()
         {
-            return Enumerable.Range(1, 5).Select(index => new League
+            var leagues = new League[]
             {
-                Name = $"League {index}"
-            });
+                new League
+                {
+                    Id = "1",
+                    Name = "Major League TagPro",
+                    Abbreviation = "MLTP",
+                    StartedOn = new DateTime(2013, 6, 23),
+                    EndedOn = null,
+                    Founder = new LeagueFounder
+                    {
+                        Id = "1",
+                        Name = "Trappets"
+                    },
+                    Status = "S16 Postseason",
+                    Seasons = new List<LeagueSeason>
+                    {
+                        new LeagueSeason
+                        {
+                            Name = "Season 16",
+                            Abbreviation = "S16",
+                        }
+                    }
+                },
+                new League
+                {
+                    Id = "2",
+                    Name = "European League TagPro",
+                    Abbreviation = "ELTP",
+                    StartedOn = new DateTime(2014, 1, 1),
+                    EndedOn = null,
+                    Founder = new LeagueFounder
+                    {
+                        Id = "2",
+                        Name = "idk bizkut?"
+                    },
+                    Status = "S12 Regular Season",
+                    Seasons = new List<LeagueSeason>
+                    {
+                        new LeagueSeason
+                        {
+                            Name = "Season 12",
+                            Abbreviation = "S12",
+                        }
+                    }
+                }
+            };
+            return leagues;
         }
 
         [HttpGet("Historical")]
@@ -24,7 +69,7 @@ namespace TagProLeague.Controllers
         {
             return Enumerable.Range(1, 5).Select(index => new League
             {
-                Name = $"League {index}"
+                Name = $"Historical League {index}"
             });
         }
 
@@ -33,7 +78,24 @@ namespace TagProLeague.Controllers
         {
             return new League
             {
-                Name = leagueName
+                Id = "1",
+                Name = "Major League TagPro",
+                Abbreviation = "MLTP",
+                StartedOn = new DateTime(2013, 6, 23),
+                EndedOn = null,
+                Founder = new LeagueFounder
+                {
+                    Name = "Trappets"
+                },
+                Status = "S16 Postseason",
+                Seasons = new List<LeagueSeason>
+                    {
+                        new LeagueSeason
+                        {
+                            Name = "Season 16",
+                            Abbreviation = "S16",
+                        }
+                    }
             };
         }
 

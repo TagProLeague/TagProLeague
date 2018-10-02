@@ -11,12 +11,11 @@ interface Params {
     leagueName: string;
 }
 
-export class League extends React.Component<RouteComponentProps<{}>, LeagueState> {
+export class League extends React.Component<RouteComponentProps<{}>, Partial<LeagueState>> {
     constructor(props: any) {
         super(props);
         const params = this.props.match.params as Params;
         this.state = {
-            league: { id: 1, name: "" },
             loading: true
         };
 
@@ -33,7 +32,7 @@ export class League extends React.Component<RouteComponentProps<{}>, LeagueState
     public render() {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
-            : League.renderLeague(this.state.league);
+            : League.renderLeague(this.state.league!!);
 
         return <div>
             {contents}
@@ -41,6 +40,9 @@ export class League extends React.Component<RouteComponentProps<{}>, LeagueState
     }
 
     private static renderLeague(league: LeagueModel) {
-        return <h1>{league.name}</h1>;
+        return <div>
+            <h1>{league.name}</h1>
+            <p>{league.status}</p>
+            </div>;
     }
 }
