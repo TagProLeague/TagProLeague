@@ -5,11 +5,11 @@ namespace TagProLeague.Services
 {
     public interface IMongoDbContext
     {
-        IMongoCollection<MongoDbPlayer> Players { get; }
-        IMongoCollection<MongoDbLeague> Leagues { get; }
-        IMongoCollection<MongoDbSeason> Seasons { get; }
-        IMongoCollection<MongoDbTeam> Teams { get; }
-        IMongoCollection<MongoDbSeries> Series { get; }
-        IMongoCollection<MongoDbMap> Maps { get; }
+        IMongoCollection<Player> Players { get; }
+        IMongoCollection<League> Leagues { get; }
+        IMongoCollection<Season> Seasons { get; }
+        IMongoCollection<Team> Teams { get; }
+        IMongoCollection<Series> Series { get; }
+        IMongoCollection<Map> Maps { get; }
     }
 }

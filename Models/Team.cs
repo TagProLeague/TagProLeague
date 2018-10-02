@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace TagProLeague.Models
 {
-    public class MongoDbTeam
+    public class Team
     {
         [BsonId]
         public ObjectId Id { get; set; }

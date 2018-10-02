@@ -6,10 +6,10 @@ namespace TagProLeague.Services
 {
     public interface ILeaguesRepository
     {
-        Task<IEnumerable<MongoDbLeague>> GetAllLeagues();
-        Task<MongoDbLeague> GetLeague(string name);
-        Task CreateLeague(MongoDbLeague league);
-        Task<bool> UpdateLeague(MongoDbLeague league);
+        Task<IEnumerable<League>> GetAllLeagues();
+        Task<League> GetLeague(string name);
+        Task CreateLeague(League league);
+        Task<bool> UpdateLeague(League league);
         Task<bool> DeleteLeague(string name);
     }
 }
