@@ -6,6 +6,7 @@
     endedOn: string;
     founder: LeagueFounder;
     status: string;
+    currentSeason: string;
     seasons: LeagueSeason[];
 }
 

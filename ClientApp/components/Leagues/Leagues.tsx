@@ -73,15 +73,14 @@ export class Leagues extends React.Component<RouteComponentProps<{}>, LeaguesSta
             {leagueTable}
         </div>;
     }
-
-    // TODO: Select current season
+    
     private static renderLeaguesTable(leagues: LeagueModel[]) {
         return <div>
             {leagues.map(league =>
                 <div style={divStyle}>
                     <strong>{league.name}</strong>
                     <div>Est {league.startedOn}</div>
-                    <div>Season: {league.seasons[0].name}</div>
+                    <div>Season: {league.currentSeason}</div>
                     <div>Founder: {league.founder.name}</div>
                     <div>Status: {league.status}</div>
                 </div>

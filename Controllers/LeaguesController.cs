@@ -29,10 +29,12 @@ namespace TagProLeague.Controllers
                         Name = "Trappets"
                     },
                     Status = "S16 Postseason",
+                    CurrentSeason = "Season 16",
                     Seasons = new List<LeagueSeason>
                     {
                         new LeagueSeason
                         {
+                            Id = "1",
                             Name = "Season 16",
                             Abbreviation = "S16",
                         }
@@ -47,14 +49,16 @@ namespace TagProLeague.Controllers
                     EndedOn = null,
                     Founder = new LeagueFounder
                     {
-                        Id = "2",
+                        Id = "1",
                         Name = "idk bizkut?"
                     },
                     Status = "S12 Regular Season",
+                    CurrentSeason = "Season 12",
                     Seasons = new List<LeagueSeason>
                     {
                         new LeagueSeason
                         {
+                            Id = "1",
                             Name = "Season 12",
                             Abbreviation = "S12",
                         }
@@ -67,10 +71,34 @@ namespace TagProLeague.Controllers
         [HttpGet("Historical")]
         public IEnumerable<League> GetHistoricalLeagues()
         {
-            return Enumerable.Range(1, 5).Select(index => new League
+            var leagues = new League[]
             {
-                Name = $"Historical League {index}"
-            });
+                new League
+                {
+                    Id = "1",
+                    Name = "Oceanic League TagPro",
+                    Abbreviation = "OLTP",
+                    StartedOn = new DateTime(2014, 1, 1),
+                    EndedOn = null,
+                    Founder = new LeagueFounder
+                    {
+                        Id = "1",
+                        Name = "Hoog"
+                    },
+                    Status = "Concluded",
+                    CurrentSeason = "N/A",
+                    Seasons = new List<LeagueSeason>
+                    {
+                        new LeagueSeason
+                        {
+                            Id = "1",
+                            Name = "Season 10",
+                            Abbreviation = "S10",
+                        }
+                    }
+                }
+            };
+            return leagues;
         }
 
         [HttpGet("{leagueName}")]

@@ -13,6 +13,7 @@ namespace TagProLeague.Models
         public DateTime? StartedOn { get; set; }
         public DateTime? EndedOn { get; set; }
         public string Status { get; set; }
+        public string CurrentSeason { get; set; }
         public LeagueFounder Founder { get; set; }
         public List<LeagueSeason> Seasons { get; set; }
         public List<LeagueTeam> Teams { get; set; }
