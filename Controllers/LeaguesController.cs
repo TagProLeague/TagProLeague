@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TagProLeague.Models;
+using MongoDB.Bson;
 
 namespace TagProLeague.Controllers
 {
@@ -13,19 +14,91 @@ namespace TagProLeague.Controllers
         [HttpGet("")]
         public IEnumerable<League> GetCurrentLeagues()
         {
-            return Enumerable.Range(1, 5).Select(index => new League
+            var leagues = new League[]
             {
-                Name = $"League {index}"
-            });
+                new League
+                {
+                    Id = "1",
+                    Name = "Major League TagPro",
+                    Abbreviation = "MLTP",
+                    StartedOn = new DateTime(2013, 6, 23),
+                    EndedOn = null,
+                    Founder = new LeagueFounder
+                    {
+                        Id = "1",
+                        Name = "Trappets"
+                    },
+                    Status = "S16 Postseason",
+                    CurrentSeason = "Season 16",
+                    Seasons = new List<LeagueSeason>
+                    {
+                        new LeagueSeason
+                        {
+                            Id = "1",
+                            Name = "Season 16",
+                            Abbreviation = "S16",
+                        }
+                    }
+                },
+                new League
+                {
+                    Id = "2",
+                    Name = "European League TagPro",
+                    Abbreviation = "ELTP",
+                    StartedOn = new DateTime(2014, 1, 1),
+                    EndedOn = null,
+                    Founder = new LeagueFounder
+                    {
+                        Id = "1",
+                        Name = "idk bizkut?"
+                    },
+                    Status = "S12 Regular Season",
+                    CurrentSeason = "Season 12",
+                    Seasons = new List<LeagueSeason>
+                    {
+                        new LeagueSeason
+                        {
+                            Id = "1",
+                            Name = "Season 12",
+                            Abbreviation = "S12",
+                        }
+                    }
+                }
+            };
+            return leagues;
         }
 
         [HttpGet("Historical")]
         public IEnumerable<League> GetHistoricalLeagues()
         {
-            return Enumerable.Range(1, 5).Select(index => new League
+            var leagues = new League[]
             {
-                Name = $"League {index}"
-            });
+                new League
+                {
+                    Id = "1",
+                    Name = "Oceanic League TagPro",
+                    Abbreviation = "OLTP",
+                    StartedOn = new DateTime(2014, 1, 1),
+                    EndedOn = null,
+                    Founder = new LeagueFounder
+                    {
+                        Id = "1",
+                        Name = "Hoog"
+                    },
+                    Status = "Concluded",
+                    CurrentSeason = "N/A",
+                    Seasons = new List<LeagueSeason>
+                    {
+                        new LeagueSeason
+                        {
+                            Id = "1",
+                            Name = "Season 10",
+                            Abbreviation = "S10",
+                        }
+                    }
+                }
+            };
+            return leagues;
         }
 
         [HttpGet("{leagueName}")]
@@ -33,7 +106,24 @@ namespace TagProLeague.Controllers
         {
             return new League
             {
-                Name = leagueName
+                Id = "1",
+                Name = "Major League TagPro",
+                Abbreviation = "MLTP",
+                StartedOn = new DateTime(2013, 6, 23),
+                EndedOn = null,
+                Founder = new LeagueFounder
+                {
+                    Name = "Trappets"
+                },
+                Status = "S16 Postseason",
+                Seasons = new List<LeagueSeason>
+                    {
+                        new LeagueSeason
+                        {
+                            Name = "Season 16",
+                            Abbreviation = "S16",
+                        }
+                    }
             };
         }
 

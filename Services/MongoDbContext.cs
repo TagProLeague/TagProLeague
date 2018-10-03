@@ -15,11 +15,11 @@ namespace TagProLeague.Services
             _db = client.GetDatabase(options.Value.Database);
         }
 
-        public IMongoCollection<MongoDbPlayer> Players => _db.GetCollection<MongoDbPlayer>("Players");
-        public IMongoCollection<MongoDbLeague> Leagues => _db.GetCollection<MongoDbLeague>("Leagues");
-        public IMongoCollection<MongoDbSeason> Seasons => _db.GetCollection<MongoDbSeason>("Seasons");
-        public IMongoCollection<MongoDbTeam> Teams => _db.GetCollection<MongoDbTeam>("Teams");
-        public IMongoCollection<MongoDbSeries> Series => _db.GetCollection<MongoDbSeries>("Series");
-        public IMongoCollection<MongoDbMap> Maps => _db.GetCollection<MongoDbMap>("Maps");
+        public IMongoCollection<Player> Players => _db.GetCollection<Player>("Players");
+        public IMongoCollection<League> Leagues => _db.GetCollection<League>("Leagues");
+        public IMongoCollection<Season> Seasons => _db.GetCollection<Season>("Seasons");
+        public IMongoCollection<Team> Teams => _db.GetCollection<Team>("Teams");
+        public IMongoCollection<Series> Series => _db.GetCollection<Series>("Series");
+        public IMongoCollection<Map> Maps => _db.GetCollection<Map>("Maps");
     }
 }
