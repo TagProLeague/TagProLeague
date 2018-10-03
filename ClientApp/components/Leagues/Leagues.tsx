@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import 'isomorphic-fetch';
 
 interface LeaguesState {
-    leagues: League[];
+    leagues: LeagueModel[];
     loading: boolean;
     isHistoricalPage: boolean;
 }
@@ -28,7 +28,7 @@ export class Leagues extends React.Component<RouteComponentProps<{}>, LeaguesSta
 
     loadLeagues = () => {
         fetch('api/Leagues/')
-            .then(response => response.json() as Promise<League[]>)
+            .then(response => response.json() as Promise<LeagueModel[]>)
             .then(data => {
                 this.setState({
                     leagues: data,
@@ -40,7 +40,7 @@ export class Leagues extends React.Component<RouteComponentProps<{}>, LeaguesSta
 
     loadHistoricalLeagues = () => {
         fetch('api/Leagues/Historical')
-            .then(response => response.json() as Promise<League[]>)
+            .then(response => response.json() as Promise<LeagueModel[]>)
             .then(data => {
                 this.setState({
                     leagues: data,
@@ -73,28 +73,26 @@ export class Leagues extends React.Component<RouteComponentProps<{}>, LeaguesSta
             {leagueTable}
         </div>;
     }
-
-    private static renderLeaguesTable(leagues: League[]) {
-        return <table className='table'>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                {leagues.map(league =>
-                    <tr key={league.id}>
-                        <td>{league.id}</td>
-                        <td><Link className='' to={`/league/${league.name}`}>{league.name}</Link></td>
-                    </tr>
-                )}
-            </tbody>
-        </table>;
+    
+    private static renderLeaguesTable(leagues: LeagueModel[]) {
+        return <div>
+            {leagues.map(league =>
+                <div style={divStyle}>
+                    <strong>{league.name}</strong>
+                    <div>Est {league.startedOn}</div>
+                    <div>Season: {league.currentSeason}</div>
+                    <div>Founder: {league.founder.name}</div>
+                    <div>Status: {league.status}</div>
+                </div>
+            )}
+        </div>;
     }
 }
 
-interface League {
-    id: number;
-    name: string;
-}
+const divStyle = {
+    margin: '10px',
+    padding: '10px',
+    backgroundColor: 'lightblue',
+    border: '5px solid lightblue',
+    borderRadius: '25px'
+};
