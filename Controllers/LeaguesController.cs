@@ -27,7 +27,7 @@ namespace TagProLeague.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<League> Get(string id)
+        public async Task<League> Get([FromQuery] string id)
         {
             var league = await _leaguesRepository.GetLeague(id);
             return league;

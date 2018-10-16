@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TagProLeague.Settings;
 using TagProLeague.Services;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace TagProLeague
 {
@@ -25,6 +26,11 @@ namespace TagProLeague
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "TagProLeague", Version = "v1" });
+            });
 
             services.Configure<MongoDbSettings>(options =>
             {
@@ -65,6 +71,8 @@ namespace TagProLeague
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
             });
+
+            app.UseSwagger();
         }
     }
 }
