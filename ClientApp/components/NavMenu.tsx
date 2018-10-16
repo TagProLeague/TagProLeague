@@ -27,11 +27,11 @@ export class NavMenu extends React.Component<{}, {}> {
                                 <span className='glyphicon glyphicon-home'></span> Home
                             </NavLink>
                         </li>
-                        <li>
+                        {/*<li>
                             <NavLink to={'/matchmaking'} exact activeClassName='active'>
                                 <span className='glyphicon glyphicon-random'></span> Matchmaking
                             </NavLink>
-                        </li>
+                        </li>*/}
                         <li>
                             <NavLink to={'/games'} activeClassName='active'>
                                 <span className='glyphicon glyphicon-king'></span> Games
@@ -42,11 +42,11 @@ export class NavMenu extends React.Component<{}, {}> {
                                 <span className='glyphicon glyphicon-queen'></span> Leagues
                             </NavLink>
                         </li>
-                        <li>
+                        {/*<li>
                             <NavLink to={'/tournaments'} exact activeClassName='active'>
                                 <span className='glyphicon glyphicon-knight'></span> Tournaments
                             </NavLink>
-                        </li>
+                        </li>*/}
                         <li>
                             <NavLink to={'/players'} activeClassName='active'>
                                 <span className='glyphicon glyphicon-pawn'></span> Players
