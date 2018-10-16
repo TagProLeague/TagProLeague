@@ -5,6 +5,16 @@ using TagProLeague.Settings;
 
 namespace TagProLeague.Services
 {
+    public interface IMongoDbContext
+    {
+        IMongoCollection<Player> Players { get; }
+        IMongoCollection<League> Leagues { get; }
+        IMongoCollection<Season> Seasons { get; }
+        IMongoCollection<Team> Teams { get; }
+        IMongoCollection<Series> Series { get; }
+        IMongoCollection<Map> Maps { get; }
+    }
+
     public class MongoDbContext : IMongoDbContext
     {
         private readonly IMongoDatabase _db;
