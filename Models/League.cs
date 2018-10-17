@@ -9,17 +9,18 @@ namespace TagProLeague.Models
     public class League
     {
         [BsonId]
-        public ObjectId Id { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
         public string Name { get; set; }
         public string Abbreviation { get; set; }
         public DateTimeOffset? StartedOn { get; set; }
         public DateTimeOffset? EndedOn { get; set; }
         public string Status { get; set; }
-        public MongoDBRef Founder { get; set; }
-        public IEnumerable<MongoDBRef> Seasons { get; set; }
-        public IEnumerable<MongoDBRef> Teams { get; set; }
-        public IEnumerable<MongoDBRef> Players { get; set; }
-        public IEnumerable<MongoDBRef> Games { get; set; }
-        public MongoDBRef TotalStatline { get; set; }
+        public string Founder { get; set; }
+        public List<string> Seasons { get; set; }
+        public List<string> Teams { get; set; }
+        public List<string> Players { get; set; }
+        public List<string> Games { get; set; }
+        public string TotalStatline { get; set; }
     }
 }

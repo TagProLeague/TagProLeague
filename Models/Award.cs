@@ -4,16 +4,17 @@ using System.Collections.Generic;
 
 namespace TagProLeague.Models
 {
-    public class Map
+    public class Award
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         public string Name { get; set; }
-        public string Url { get; set; }
         public string ImageUrl { get; set; }
-        public List<string> Games { get; set; }
-        public List<string> Statlines { get; set; }
-        public string TotalStatline { get; set; }
+        public int Place { get; set; }
+        public string Type { get; set; }
+        public string Season { get; set; }
+        public List<string> Teams { get; set; }
+        public List<string> Players { get; set; }
     }
 }
