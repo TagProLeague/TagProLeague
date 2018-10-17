@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,8 @@ namespace TagProLeague.Services
     public interface ILeaguesRepository
     {
         Task<IEnumerable<League>> GetAllLeagues();
-        Task<League> GetLeague(string name);
+        Task<League> GetLeagueByName(string name);
+        Task<League> GetLeagueById(string id);
         Task CreateLeague(League league);
         Task<bool> UpdateLeague(League league);
         Task<bool> DeleteLeague(string name);
@@ -33,9 +35,18 @@ namespace TagProLeague.Services
                             .ToListAsync();
         }
 
-        public Task<League> GetLeague(string name)
+        public Task<League> GetLeagueByName(string name)
         {
             FilterDefinition<League> filter = Builders<League>.Filter.Eq(m => m.Name, name);
+            return _context
+                    .Leagues
+                    .Find(filter)
+                    .FirstOrDefaultAsync();
+        }
+
+        public Task<League> GetLeagueById(string id)
+        {
+            FilterDefinition<League> filter = Builders<League>.Filter.Eq(m => m.Id, id);
             return _context
                     .Leagues
                     .Find(filter)

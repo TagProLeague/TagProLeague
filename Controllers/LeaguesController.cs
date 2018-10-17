@@ -1,10 +1,7 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TagProLeague.Models;
-using MongoDB.Bson;
 using TagProLeague.Services;
 
 namespace TagProLeague.Controllers
@@ -29,7 +26,7 @@ namespace TagProLeague.Controllers
         [HttpGet("{id}")]
         public async Task<League> Get([FromQuery] string id)
         {
-            var league = await _leaguesRepository.GetLeague(id);
+            var league = await _leaguesRepository.GetLeagueById(id);
             return league;
         }
     }
