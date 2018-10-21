@@ -1,16 +1,7 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-using System;
-using System.Collections.Generic;
-
-namespace TagProLeague.Models
+﻿namespace TagProLeague.Models
 {
-    public class GameFormat
+    public class GameFormat : Document
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
-        public string Name { get; set; }
         public int Accel { get; set; }
         public int TopSpeed { get; set; }
         public int Bounce { get; set; }

@@ -1,16 +1,10 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace TagProLeague.Models
 {
-    public class Game
+    public class Game : Document
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
-        public string Name { get; set; }
         public DateTimeOffset? Date { get; set; }
         public int Result { get; set; }
         public string EuUrl { get; set; }
