@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TagProLeague.Settings;
 using TagProLeague.Services;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace TagProLeague
 {
@@ -26,6 +27,11 @@ namespace TagProLeague
         {
             services.AddMvc();
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "TagProLeague", Version = "v1" });
+            });
+
             services.Configure<MongoDbSettings>(options =>
             {
                 options.ConnectionString = Configuration["MongoDb:ConnectionString"];
@@ -34,6 +40,7 @@ namespace TagProLeague
 
             services.AddTransient<IMongoDbContext, MongoDbContext>();
             services.AddTransient<ILeaguesRepository, LeaguesRepository>();
+            services.AddTransient<ISeasonsRepository, SeasonsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +72,8 @@ namespace TagProLeague
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
             });
+
+            app.UseSwagger();
         }
     }
 }
