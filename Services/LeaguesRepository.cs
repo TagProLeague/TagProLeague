@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,16 @@ using TagProLeague.Models;
 
 namespace TagProLeague.Services
 {
+    public interface ILeaguesRepository
+    {
+        Task<IEnumerable<League>> GetAllLeagues();
+        Task<League> GetLeagueByName(string name);
+        Task<League> GetLeagueById(string id);
+        Task CreateLeague(League league);
+        Task<bool> UpdateLeague(League league);
+        Task<bool> DeleteLeague(string name);
+    }
+
     public class LeaguesRepository : ILeaguesRepository
     {
         private readonly IMongoDbContext _context;
@@ -15,6 +26,7 @@ namespace TagProLeague.Services
         {
             _context = context;
         }
+
         public async Task<IEnumerable<League>> GetAllLeagues()
         {
             return await _context
@@ -22,9 +34,19 @@ namespace TagProLeague.Services
                             .Find(_ => true)
                             .ToListAsync();
         }
-        public Task<League> GetLeague(string name)
+
+        public Task<League> GetLeagueByName(string name)
         {
             FilterDefinition<League> filter = Builders<League>.Filter.Eq(m => m.Name, name);
+            return _context
+                    .Leagues
+                    .Find(filter)
+                    .FirstOrDefaultAsync();
+        }
+
+        public Task<League> GetLeagueById(string id)
+        {
+            FilterDefinition<League> filter = Builders<League>.Filter.Eq(m => m.Id, id);
             return _context
                     .Leagues
                     .Find(filter)
@@ -35,6 +57,7 @@ namespace TagProLeague.Services
         {
             await _context.Leagues.InsertOneAsync(league);
         }
+
         public async Task<bool> UpdateLeague(League league)
         {
             ReplaceOneResult updateResult =
@@ -46,6 +69,7 @@ namespace TagProLeague.Services
             return updateResult.IsAcknowledged
                     && updateResult.ModifiedCount > 0;
         }
+
         public async Task<bool> DeleteLeague(string name)
         {
             FilterDefinition<League> filter = Builders<League>.Filter.Eq(m => m.Name, name);
