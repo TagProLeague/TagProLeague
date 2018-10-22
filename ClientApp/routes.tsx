@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Route } from 'react-router-dom';
-import { Layout } from './components/Layout';
-import { Home } from './components/Home';
+import { Layout } from './Components/Layout';
+import { Home } from './Components/Home/Home';
 import { League, Leagues } from './components/Leagues/index';
 
 export const routes = <Layout>
