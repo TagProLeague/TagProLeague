@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\components\Leagues\index.tsx" />
-    <None Remove="ClientApp\components\Leagues\LeagueModel.tsx" />
+    <None Remove="ClientApp\Components\Leagues\index.tsx" />
+    <None Remove="ClientApp\Components\Leagues\LeagueModel.tsx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,8 +27,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\components\Leagues\index.tsx" />
-    <TypeScriptCompile Include="ClientApp\components\Leagues\LeagueModel.tsx" />
+    <TypeScriptCompile Include="ClientApp\Components\Leagues\index.tsx" />
+    <TypeScriptCompile Include="ClientApp\Components\Leagues\LeagueModel.tsx" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
