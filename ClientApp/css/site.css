@@ -1,3 +1,6 @@
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,900|Open+Sans');
+
 .main-nav li .glyphicon {
     margin-right: 10px;
 }
@@ -63,4 +66,11 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
+}
+
+/* League List View */
+
+#leagueBanner:hover {
+    border: 5px solid transparent;
+    border-radius: 3px;
 }

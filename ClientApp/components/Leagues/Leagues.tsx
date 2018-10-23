@@ -46,22 +46,34 @@ export class Leagues extends React.Component<RouteComponentProps<{}>, LeaguesSta
     private static renderLeaguesTable(leagues: LeagueModel[]) {
         return <div>
             {leagues.map(league =>
-                <div style={divStyle}>
-                    <strong>{league.name}</strong>
-                    <div>Est {league.startedOn}</div>
-                    <div>Season: {league.currentSeason}</div>
+                <div style={bannerStyle} id='leagueBanner'>
+                    <text style={labelStyle}><strong>{league.abbreviation}</strong></text>
+                    <div style={subLabelStyle}>Est. {league.startedOn.substring(0, 4)}</div>
+                    {/*<div>Season: {league.currentSeason}</div>
                     <div>Founder: {league.founder.name}</div>
-                    <div>Status: {league.status}</div>
+                    <div>Status: {league.status}</div>*/}
                 </div>
             )}
         </div>;
     }
 }
 
-const divStyle = {
+const bannerStyle = {
     margin: '10px',
     padding: '10px',
-    backgroundColor: 'lightblue',
-    border: '5px solid lightblue',
-    borderRadius: '25px'
+    backgroundImage: 'linear-gradient(to left, rgba(255, 255, 255, .5), rgba(181, 194, 204, 0.75), rgba(7, 59, 94, 1))',
+    height: '8em'
 };
+
+const labelStyle = {
+    color: 'white',
+    fontSize: '3.5em',
+    fontFamily: 'Montserrat, sans-serif'
+}
+
+const subLabelStyle = {
+    color: 'white',
+    fontSize: '1em',
+    fontFamily: 'Montserrat, sans-serif',
+    marginTop: '-10px'
+}
