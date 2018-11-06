@@ -1,8 +1,25 @@
 import * as React from 'react';
+import autobind from 'autobind-decorator';
 import { Link, NavLink } from 'react-router-dom';
+import { Auth0Authentication } from '../auth/Auth0Authentication';
 
-export class NavMenu extends React.Component<{}, {}> {
+export interface NavProps {
+	auth: Auth0Authentication;
+}
+
+export class NavMenu extends React.Component<NavProps, {}> {
+    @autobind
+	login() {
+		this.props.auth.login();
+	}
+
+	@autobind
+	logout() {
+		this.props.auth.logout();
+    }
+    
     public render() {
+		const { authenticated } = this.props.auth;
         return <div className='main-nav'>
                 <div className='navbar navbar-inverse'>
                 <div className='navbar-header'>
@@ -18,9 +35,16 @@ export class NavMenu extends React.Component<{}, {}> {
                 <div className='navbar-collapse collapse'>
                     <ul className='nav navbar-nav'>
                         <li>
-                            <NavLink to={'/login'} exact activeClassName='active'>
-                                <span className='glyphicon glyphicon-globe'></span> Login
-                            </NavLink>
+                            {!authenticated && (
+                                <a href="#" onClick={this.login}>
+                                    <span className='glyphicon glyphicon-globe'></span> Log In
+					            </a>
+                            )}
+                            {authenticated && (
+                                <a href="#" onClick={this.logout}>
+                                    <span className='glyphicon glyphicon-globe'></span> Log Out
+					            </a>
+                            )}
                         </li>
                         <li>
                             <NavLink to={'/'} exact activeClassName='active'>
