@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import { CSSProperties, SFC } from 'react';
-const loading = require('./loading.svg');
+const loading = require('./loading.svg') as string;
 
 export interface CallbackProps { }
 
@@ -9,8 +9,8 @@ export const Callback: SFC<CallbackProps> = props => {
 		position: 'absolute',
 		display: 'flex',
 		justifyContent: 'center',
-		height: '100vh',
-		width: '100vw',
+		height: '300px',
+		width: '300px',
 		top: 0,
 		bottom: 0,
 		left: 0,
