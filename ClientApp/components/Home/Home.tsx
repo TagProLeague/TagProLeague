@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Component } from 'react';
 import { RouteComponentProps } from 'react-router';
 
 export class Home extends React.Component<RouteComponentProps<{}>, {}> {
