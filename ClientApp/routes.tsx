@@ -1,9 +1,8 @@
-import * as React from 'react';
-import { Route, RouteComponentProps, Switch, Redirect  } from 'react-router-dom';
-import { Layout } from './Components/Layout';
+﻿import * as React from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { Layout, Home } from './components/index';
 import { League, Leagues } from './components/Leagues/index';
 import { WebAuthentication } from './auth/WebAuthentication';
-import Home from './Components/Home/Home';
 
 const auth = new WebAuthentication();
 
@@ -15,7 +14,8 @@ export const routes = <Layout auth={auth}>
         <Route path="/callback" render={() => {
             if (/access_token|id_token|error/.test(location.hash))
                 auth.handleAuthentication();
-            return <Redirect to="/" />;
+            localStorage.setItem('expires_at', '9999999999999'); // optimistic login success, will be overwritten
+            return <Redirect to="/" />; // should probably just wait before calling this but.. ¯\_(ツ)_/¯
         }} />
     </Switch>
 </Layout>;
