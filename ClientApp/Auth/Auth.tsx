@@ -1,5 +1,4 @@
 ﻿import autobind from 'autobind-decorator';
-import history from '../utils/history';
 import { AUTH_CONFIG } from './configuration';
 import { Auth0Authentication } from './Auth0Authentication';
 import { Auth0DecodedHash, Auth0Error, WebAuth } from 'auth0-js';
@@ -43,10 +42,7 @@ export class WebAuthentication implements Auth0Authentication {
 		this.auth0.parseHash((e: Auth0Error, result: Auth0DecodedHash) => {
 			if (result && result.accessToken && result.idToken) {
 				this.setSession(result);
-				history.replace('/');
 			} else if (e) {
-				history.replace('/');
-				// tslint:disable-next-line:no-console
 				console.error(e);
 				alert(`Error: ${e.error}. Check the console for further details.`);
 			}
@@ -61,8 +57,6 @@ export class WebAuthentication implements Auth0Authentication {
 		localStorage.setItem('access_token', accessToken!);
 		localStorage.setItem('id_token', idToken!);
 		localStorage.setItem('expires_at', expiresAt);
-		// navigate to the base route
-		history.replace('/');
 	}
 
 	@autobind
@@ -71,7 +65,5 @@ export class WebAuthentication implements Auth0Authentication {
 		localStorage.removeItem('access_token');
 		localStorage.removeItem('id_token');
 		localStorage.removeItem('expires_at');
-		// navigate to the base route
-		history.replace('/');
 	}
 }

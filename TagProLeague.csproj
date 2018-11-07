@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\components\index.tsx" />
     <None Remove="ClientApp\Components\Leagues\index.tsx" />
     <None Remove="ClientApp\Components\Leagues\LeagueModel.tsx" />
   </ItemGroup>
@@ -27,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\components\index.tsx" />
     <TypeScriptCompile Include="ClientApp\Components\Leagues\index.tsx" />
     <TypeScriptCompile Include="ClientApp\Components\Leagues\LeagueModel.tsx" />
   </ItemGroup>

@@ -16,6 +16,7 @@ export class NavMenu extends React.Component<NavProps, {}> {
 	@autobind
 	logout() {
 		this.props.auth.logout();
+        this.setState({});
     }
     
     public render() {
@@ -36,14 +37,14 @@ export class NavMenu extends React.Component<NavProps, {}> {
                     <ul className='nav navbar-nav'>
                         <li>
                             {!authenticated && (
-                                <a href="#" onClick={this.login}>
+                                <button className="btn btn-block" onClick={this.login}>
                                     <span className='glyphicon glyphicon-globe'></span> Log In
-					            </a>
+					            </button>
                             )}
                             {authenticated && (
-                                <a href="#" onClick={this.logout}>
+                                <button className="btn btn-block" onClick={this.logout}>
                                     <span className='glyphicon glyphicon-globe'></span> Log Out
-					            </a>
+					            </button>
                             )}
                         </li>
                         <li>
