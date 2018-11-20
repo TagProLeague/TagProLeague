@@ -3,17 +3,12 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace TagProLeague.Models
 {
-    public interface IDocument
-    {
-        string Id { get; set; }
-        string Name { get; set; }
-    }
-
     public class Document
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        string Id { get; set; }
-        string Name { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public int Version { get; set; }
     }
 }

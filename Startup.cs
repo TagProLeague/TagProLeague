@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using TagProLeague.Settings;
 using TagProLeague.Services;
 using Swashbuckle.AspNetCore.Swagger;
+using TagProLeague.Models;
 
 namespace TagProLeague
 {
@@ -39,8 +40,8 @@ namespace TagProLeague
             });
 
             services.AddTransient<IMongoDbContext, MongoDbContext>();
-            services.AddTransient<ILeaguesRepository, LeaguesRepository>();
-            services.AddTransient<ISeasonsRepository, SeasonsRepository>();
+            services.AddTransient<IDocumentsRepository<League>, DocumentsRepository<League>>();
+            services.AddTransient<IDocumentsRepository<Season>, DocumentsRepository<Season>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

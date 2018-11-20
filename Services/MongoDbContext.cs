@@ -19,6 +19,7 @@ namespace TagProLeague.Services
         IMongoCollection<Award> Awards { get; }
         IMongoCollection<Statline> Statlines { get; }
         IMongoCollection<Map> Maps { get; }
+        IMongoCollection<T> Collection<T>();
     }
 
     public class MongoDbContext : IMongoDbContext
@@ -43,5 +44,22 @@ namespace TagProLeague.Services
         public IMongoCollection<Award> Awards => _db.GetCollection<Award>("Award");
         public IMongoCollection<Statline> Statlines => _db.GetCollection<Statline>("Statline");
         public IMongoCollection<Map> Maps => _db.GetCollection<Map>("Maps");
+
+        public IMongoCollection<T> Collection<T>()
+        {
+            if (typeof(T) == typeof(Player)) return Players as IMongoCollection<T>;
+            if (typeof(T) == typeof(League)) return Leagues as IMongoCollection<T>;
+            if (typeof(T) == typeof(Season)) return Seasons as IMongoCollection<T>;
+            if (typeof(T) == typeof(Team)) return Teams as IMongoCollection<T>;
+            if (typeof(T) == typeof(Series)) return Series as IMongoCollection<T>;
+            if (typeof(T) == typeof(SeriesFormat)) return SeriesFormats as IMongoCollection<T>;
+            if (typeof(T) == typeof(Video)) return Videos as IMongoCollection<T>;
+            if (typeof(T) == typeof(Game)) return Games as IMongoCollection<T>;
+            if (typeof(T) == typeof(GameFormat)) return GameFormats as IMongoCollection<T>;
+            if (typeof(T) == typeof(Award)) return Awards as IMongoCollection<T>;
+            if (typeof(T) == typeof(Statline)) return Statlines as IMongoCollection<T>;
+            if (typeof(T) == typeof(Map)) return Maps as IMongoCollection<T>;
+            return null;
+        }
     }
 }
