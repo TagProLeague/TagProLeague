@@ -1,4 +1,5 @@
 ﻿using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TagProLeague.Models;
@@ -68,19 +69,21 @@ namespace TagProLeague.Services
         public async Task<bool> DeleteDocumentByName(string name)
         {
             FilterDefinition<T> filter = Builders<T>.Filter.Eq(m => (m as Document).Name, name);
-            DeleteResult deleteResult = await _context.Collection<T>()
-                .DeleteOneAsync(filter);
-            return deleteResult.IsAcknowledged
-                && deleteResult.DeletedCount > 0;
+            UpdateDefinition<T> update = Builders<T>.Update.Set(m => (m as Document).DeletedDate, DateTime.UtcNow);
+            UpdateResult updateResult = await _context.Collection<T>()
+                .UpdateOneAsync(filter, update);
+            return updateResult.IsAcknowledged
+                && updateResult.ModifiedCount > 0;
         }
 
         public async Task<bool> DeleteDocumentById(string id)
         {
             FilterDefinition<T> filter = Builders<T>.Filter.Eq(m => (m as Document).Id, id);
-            DeleteResult deleteResult = await _context.Collection<T>()
-                .DeleteOneAsync(filter);
-            return deleteResult.IsAcknowledged
-                && deleteResult.DeletedCount > 0;
+            UpdateDefinition<T> update = Builders<T>.Update.Set(m => (m as Document).DeletedDate, DateTime.UtcNow);
+            UpdateResult updateResult = await _context.Collection<T>()
+                .UpdateOneAsync(filter, update);
+            return updateResult.IsAcknowledged
+                && updateResult.ModifiedCount > 0;
         }
     }
 }
