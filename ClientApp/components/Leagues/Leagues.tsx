@@ -48,9 +48,9 @@ export class Leagues extends React.Component<RouteComponentProps<{}>, LeaguesSta
             {leagues.map(league =>
                 <div style={divStyle}>
                     <strong>{league.name}</strong>
-                    <div>Est {league.startedOn}</div>
-                    <div>Season: {league.currentSeason}</div>
-                    <div>Founder: {league.founder.name}</div>
+                    <div>Established: {league.startedOn}</div>
+                    <div>Season: {league.seasons[0]}</div>
+                    <div>Founder: {league.founder}</div>
                     <div>Status: {league.status}</div>
                 </div>
             )}

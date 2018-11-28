@@ -1,15 +1,7 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-using System.Collections.Generic;
-
-namespace TagProLeague.Models
+﻿namespace TagProLeague.Models
 {
-    public class Statline
+    public class Statline : Document
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
-        public string Name { get; set; }
         public string DisplayName { get; set; }
         public int Score { get; set; }
         public int Tags { get; set; }

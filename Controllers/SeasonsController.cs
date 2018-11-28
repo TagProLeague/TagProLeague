@@ -12,9 +12,9 @@ namespace TagProLeague.Controllers
     [Route("api/[controller]")]
     public class SeasonsController : Controller
     {
-        ISeasonsRepository _seasonsRepository;
+        IDocumentsRepository<Season> _seasonsRepository;
 
-        public SeasonsController(ISeasonsRepository seasonsRepository)
+        public SeasonsController(IDocumentsRepository<Season> seasonsRepository)
         {
             _seasonsRepository = seasonsRepository;
         }
@@ -22,14 +22,14 @@ namespace TagProLeague.Controllers
         [HttpGet]
         public async Task<IEnumerable<Season>> Get()
         {
-            var seasons = await _seasonsRepository.GetAllSeasons();
+            var seasons = await _seasonsRepository.GetAllDocuments();
             return seasons;
         }
 
         [HttpGet("{id}")]
         public async Task<Season> Get([FromQuery] string id)
         {
-            var season = await _seasonsRepository.GetSeasonById(id);
+            var season = await _seasonsRepository.GetDocumentById(id);
             return season;
         }
     }

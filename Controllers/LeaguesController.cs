@@ -9,9 +9,9 @@ namespace TagProLeague.Controllers
     [Route("api/[controller]")]
     public class LeaguesController : Controller
     {
-        ILeaguesRepository _leaguesRepository;
+        IDocumentsRepository<League> _leaguesRepository;
 
-        public LeaguesController(ILeaguesRepository leaguesRepository)
+        public LeaguesController(IDocumentsRepository<League> leaguesRepository)
         {
             _leaguesRepository = leaguesRepository;
         }
@@ -19,14 +19,14 @@ namespace TagProLeague.Controllers
         [HttpGet]
         public async Task<IEnumerable<League>> Get()
         {
-            var leagues = await _leaguesRepository.GetAllLeagues();
+            var leagues = await _leaguesRepository.GetAllDocuments();
             return leagues;
         }
 
         [HttpGet("{id}")]
         public async Task<League> Get([FromQuery] string id)
         {
-            var league = await _leaguesRepository.GetLeagueById(id);
+            var league = await _leaguesRepository.GetDocumentById(id);
             return league;
         }
     }
