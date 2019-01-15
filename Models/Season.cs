@@ -6,8 +6,8 @@ namespace TagProLeague.Models
     public class Season : Document
     {
         public string Abbreviation { get; set; }
-        public DateTimeOffset? StartedOn { get; set; }
-        public DateTimeOffset? EndedOn { get; set; }
+        public DateTime? StartedOn { get; set; }
+        public DateTime? EndedOn { get; set; }
         public string League { get; set; }
         public List<string> Administrators { get; set; }
         public SeasonFormat SeasonFormat { get; set; }
@@ -21,6 +21,7 @@ namespace TagProLeague.Models
 
     public class SeasonFormat
     {
+        public string Type { get; set; }
         public string RulesUrl { get; set; }
         public int TeamCount { get; set; }
         public string TeamGroupIdentifier { get; set; }

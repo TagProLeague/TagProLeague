@@ -2,16 +2,17 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 import 'isomorphic-fetch';
 
-interface LeagueState {
-    league: LeagueModel;
+interface SeasonState {
+    season: SeasonModel;
     loading: boolean;
 }
 
 interface Params {
     leagueName: string;
+    seasonName: string;
 }
 
-export class League extends React.Component<RouteComponentProps<{}>, Partial<LeagueState>> {
+export class Season extends React.Component<RouteComponentProps<{}>, Partial<SeasonState>> {
     constructor(props: any) {
         super(props);
         const params = this.props.match.params as Params;
@@ -19,11 +20,11 @@ export class League extends React.Component<RouteComponentProps<{}>, Partial<Lea
             loading: true
         };
 
-        fetch(`api/leagues/${params.leagueName}`)
+        fetch(`api/seasons/${params.leagueName}/${params.seasonName}/`)
             .then(response => response.json() as Promise<LeagueModel>)
             .then(data => {
                 this.setState({
-                    league: data,
+                    season: data,
                     loading: false
                 });
         });
@@ -32,17 +33,16 @@ export class League extends React.Component<RouteComponentProps<{}>, Partial<Lea
     public render() {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
-            : League.renderLeague(this.state.league!!);
+            : Season.renderSeason(this.state.season!!);
 
         return <div>
             {contents}
         </div>;
     }
 
-    private static renderLeague(league: LeagueModel) {
+    private static renderSeason(season: SeasonModel) {
         return <div>
-            <h1>{league.name}</h1>
-            <p>{league.status}</p>
+            <h1>{season.name}</h1>
             </div>;
     }
 }

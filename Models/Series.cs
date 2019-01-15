@@ -5,7 +5,7 @@ namespace TagProLeague.Models
 {
     public class Series : Document
     {
-        public DateTimeOffset? Date { get; set; }
+        public DateTime? Date { get; set; }
         public string Result { get; set; }
         public string Season { get; set; }
         public string Format { get; set; }

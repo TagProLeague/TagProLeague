@@ -10,8 +10,10 @@
 
   <ItemGroup>
     <None Remove="ClientApp\components\index.tsx" />
+    <None Remove="ClientApp\components\Seasons\index.tsx" />
     <None Remove="ClientApp\Components\Leagues\index.tsx" />
     <None Remove="ClientApp\Components\Leagues\LeagueModel.tsx" />
+    <None Remove="ClientApp\components\Seasons\SeasonModel.tsx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +31,8 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\components\index.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Seasons\index.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Seasons\SeasonModel.tsx" />
     <TypeScriptCompile Include="ClientApp\Components\Leagues\index.tsx" />
     <TypeScriptCompile Include="ClientApp\Components\Leagues\LeagueModel.tsx" />
   </ItemGroup>

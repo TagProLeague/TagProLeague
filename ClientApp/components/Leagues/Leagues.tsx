@@ -46,10 +46,9 @@ export class Leagues extends React.Component<RouteComponentProps<{}>, LeaguesSta
     private static renderLeaguesTable(leagues: LeagueModel[]) {
         return <div>
             {leagues.map(league =>
-                <div style={divStyle}>
+                <div key={league.id} style={divStyle}>
                     <strong>{league.name}</strong>
                     <div>Established: {league.startedOn}</div>
-                    <div>Season: {league.seasons[0]}</div>
                     <div>Founder: {league.founder}</div>
                     <div>Status: {league.status}</div>
                 </div>

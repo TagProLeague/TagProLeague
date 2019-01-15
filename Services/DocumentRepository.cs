@@ -11,6 +11,7 @@ namespace TagProLeague.Services
         Task<IEnumerable<T>> GetAllDocuments();
         Task<T> GetDocumentByName(string name);
         Task<T> GetDocumentById(string id);
+        Task<List<T>> GetDocumentListByIds(List<string> id);
         Task CreateDocument(T document);
         Task<bool> UpdateDocument(T document);
         Task<bool> DeleteDocumentByName(string name);
@@ -47,6 +48,14 @@ namespace TagProLeague.Services
             return _context.Collection<T>()
                     .Find(filter)
                     .FirstOrDefaultAsync();
+        }
+
+        public Task<List<T>> GetDocumentListByIds(List<string> ids)
+        {
+            FilterDefinition<T> filter = Builders<T>.Filter.In(m => (m as Document).Id, ids);
+            return _context.Collection<T>()
+                    .Find(filter)
+                    .ToListAsync();
         }
 
         public async Task CreateDocument(T document)

@@ -5,8 +5,8 @@ namespace TagProLeague.Models
 {
     public class Team : Document
     {
-        public DateTimeOffset? EstablishedOn { get; set; }
-        public DateTimeOffset? LastActiveOn { get; set; }
+        public DateTime? EstablishedOn { get; set; }
+        public DateTime? LastActiveOn { get; set; }
         public string LogoUrl { get; set; }
         public string Abbreviation { get; set; }
         public string Founder { get; set; }

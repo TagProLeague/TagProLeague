@@ -5,8 +5,8 @@ namespace TagProLeague.Models
 {
     public class Player : Document
     {
-        public DateTimeOffset? PlayedSince { get; set; }
-        public DateTimeOffset? LastOnline { get; set; }
+        public DateTime? PlayedSince { get; set; }
+        public DateTime? LastOnline { get; set; }
         public string ImageUrl { get; set; }
         public ContactProfile ContactProfile { get; set; }
         public StreamProfile StreamProfile { get; set; }

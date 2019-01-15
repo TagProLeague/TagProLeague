@@ -32,18 +32,18 @@ namespace TagProLeague.Services
             _db = client.GetDatabase(options.Value.Database);
         }
 
-        public IMongoCollection<Player> Players => _db.GetCollection<Player>("Players");
-        public IMongoCollection<League> Leagues => _db.GetCollection<League>("Leagues");
-        public IMongoCollection<Season> Seasons => _db.GetCollection<Season>("Seasons");
-        public IMongoCollection<Team> Teams => _db.GetCollection<Team>("Teams");
-        public IMongoCollection<Series> Series => _db.GetCollection<Series>("Series");
-        public IMongoCollection<SeriesFormat> SeriesFormats => _db.GetCollection<SeriesFormat>("SeriesFormat");
-        public IMongoCollection<Video> Videos => _db.GetCollection<Video>("Video");
-        public IMongoCollection<Game> Games => _db.GetCollection<Game>("Game");
-        public IMongoCollection<GameFormat> GameFormats => _db.GetCollection<GameFormat>("GameFormat");
-        public IMongoCollection<Award> Awards => _db.GetCollection<Award>("Award");
-        public IMongoCollection<Statline> Statlines => _db.GetCollection<Statline>("Statline");
-        public IMongoCollection<Map> Maps => _db.GetCollection<Map>("Maps");
+        public IMongoCollection<Player> Players => _db.GetCollection<Player>("players");
+        public IMongoCollection<League> Leagues => _db.GetCollection<League>("leagues");
+        public IMongoCollection<Season> Seasons => _db.GetCollection<Season>("seasons");
+        public IMongoCollection<Team> Teams => _db.GetCollection<Team>("teams");
+        public IMongoCollection<Series> Series => _db.GetCollection<Series>("series");
+        public IMongoCollection<SeriesFormat> SeriesFormats => _db.GetCollection<SeriesFormat>("seriesFormat");
+        public IMongoCollection<Video> Videos => _db.GetCollection<Video>("video");
+        public IMongoCollection<Game> Games => _db.GetCollection<Game>("game");
+        public IMongoCollection<GameFormat> GameFormats => _db.GetCollection<GameFormat>("gameFormat");
+        public IMongoCollection<Award> Awards => _db.GetCollection<Award>("award");
+        public IMongoCollection<Statline> Statlines => _db.GetCollection<Statline>("statline");
+        public IMongoCollection<Map> Maps => _db.GetCollection<Map>("maps");
 
         public IMongoCollection<T> Collection<T>()
         {

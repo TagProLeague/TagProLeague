@@ -23,10 +23,10 @@ namespace TagProLeague.Controllers
             return leagues;
         }
 
-        [HttpGet("{id}")]
-        public async Task<League> Get([FromQuery] string id)
+        [HttpGet("{name}")]
+        public async Task<League> Get([FromRoute] string name)
         {
-            var league = await _leaguesRepository.GetDocumentById(id);
+            var league = await _leaguesRepository.GetDocumentByName(name);
             return league;
         }
     }

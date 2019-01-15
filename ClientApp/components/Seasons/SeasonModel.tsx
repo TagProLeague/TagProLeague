@@ -1,0 +1,3 @@
+﻿interface SeasonModel {
+    name: string;
+}
