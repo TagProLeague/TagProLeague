@@ -14,11 +14,14 @@
     <None Remove="ClientApp\Components\Leagues\index.tsx" />
     <None Remove="ClientApp\Components\Leagues\LeagueModel.tsx" />
     <None Remove="ClientApp\components\Seasons\SeasonModel.tsx" />
+    <None Remove="ClientApp\components\Teams\index.tsx" />
+    <None Remove="ClientApp\components\Teams\TeamModel.tsx" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Bogus" Version="24.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" />
     <PackageReference Include="MongoDB.Bson" Version="2.7.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.7.0" />
     <PackageReference Include="MongoDB.Driver.Core" Version="2.7.0" />
@@ -35,6 +38,8 @@
     <TypeScriptCompile Include="ClientApp\components\Seasons\SeasonModel.tsx" />
     <TypeScriptCompile Include="ClientApp\Components\Leagues\index.tsx" />
     <TypeScriptCompile Include="ClientApp\Components\Leagues\LeagueModel.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Teams\index.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Teams\TeamModel.tsx" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

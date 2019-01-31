@@ -41,7 +41,7 @@ namespace TagProLeague.Services
                     .Find(filter)
                     .FirstOrDefaultAsync();
         }
-
+        
         public Task<T> GetDocumentById(string id)
         {
             FilterDefinition<T> filter = Builders<T>.Filter.Eq(m => (m as Document).Id, id);

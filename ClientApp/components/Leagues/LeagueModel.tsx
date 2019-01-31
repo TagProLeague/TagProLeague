@@ -1,7 +1,6 @@
 ﻿interface LeagueModel {
     id: number;
     name: string;
-    abbreviation: string;
     startedOn: string;
     endedOn: string;
     founder: LeagueFounder;
@@ -16,5 +15,4 @@ interface LeagueFounder {
 
 interface LeagueSeason {
     name: string;
-    abbreviation: string;
 }

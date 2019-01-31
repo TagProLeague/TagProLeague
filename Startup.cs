@@ -42,6 +42,7 @@ namespace TagProLeague
             services.AddTransient<IMongoDbContext, MongoDbContext>();
             services.AddTransient<IDocumentsRepository<League>, DocumentsRepository<League>>();
             services.AddTransient<IDocumentsRepository<Season>, DocumentsRepository<Season>>();
+            services.AddTransient<IDocumentsRepository<Team>, DocumentsRepository<Team>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
