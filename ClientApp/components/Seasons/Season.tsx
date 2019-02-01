@@ -21,7 +21,7 @@ export class Season extends React.Component<RouteComponentProps<{}>, Partial<Sea
         };
 
         fetch(`api/seasons/${params.leagueName}/${params.seasonName}/`)
-            .then(response => response.json() as Promise<LeagueModel>)
+            .then(response => response.json() as Promise<SeasonModel>)
             .then(data => {
                 this.setState({
                     season: data,

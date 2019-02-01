@@ -1,3 +1,8 @@
 ﻿interface SeasonModel {
-    name: string;
+	name: string;
+	teams: SeasonTeam[];
+}
+
+interface SeasonTeam {
+	name: string;
 }

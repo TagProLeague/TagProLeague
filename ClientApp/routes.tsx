@@ -15,6 +15,8 @@ export const routes = <Layout auth={auth}>
         <Route exact path='/league/:leagueName/' component={League} />
         <Route exact path='/league/:leagueName/seasons/' component={Seasons} />
 		<Route exact path='/league/:leagueName/season/:seasonName/' component={Season} />
+		<Route exact path='/league/:leagueName/season/:seasonName/teams' component={Teams} />
+		<Route exact path='/league/:leagueName/season/:seasonName/team/:teamName' component={Team} />
 		<Route exact path='/teams/' component={Teams} />
 		<Route exact path='/team/:teamName/' component={Team} />
         <Route exact path="/callback" render={() => {
